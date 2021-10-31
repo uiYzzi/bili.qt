@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/logo.png</file>
+        <file>icon/light/0.svg</file>
+        <file>icon/light/1.svg</file>
+        <file>icon/light/2.svg</file>
+        <file>icon/light/3.svg</file>
+        <file>icon/light/4.svg</file>
+        <file>icon/light/6.svg</file>
+        <file>icon/light/5.svg</file>
+        <file>icon/light/refresh.svg</file>
+    </qresource>
+</RCC>
