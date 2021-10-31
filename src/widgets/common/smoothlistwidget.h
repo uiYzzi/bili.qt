@@ -2,6 +2,7 @@
 #define SMOOTHLISTWIDGET_H
 
 #include <QWidget>
+#include <QPushButton>
 #include <QListWidget>
 #include "smoothscrollbar.h"
 class SmoothListWidget: public QListWidget

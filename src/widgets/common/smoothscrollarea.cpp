@@ -12,6 +12,5 @@ SmoothScrollArea::SmoothScrollArea(QWidget *parent) : QScrollArea(parent)
 void SmoothScrollArea::wheelEvent(QWheelEvent *e)
 {
     //当捕获到事件后，调用相对滚动的槽函数
-    qDebug()<<"sdgfsdgfdsgf";
     vScrollBar->scroll(e->angleDelta().y());
 }

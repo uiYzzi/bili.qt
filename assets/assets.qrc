@@ -9,5 +9,7 @@
         <file>icon/light/6.svg</file>
         <file>icon/light/5.svg</file>
         <file>icon/light/refresh.svg</file>
+        <file>icon/light/top.svg</file>
+        <file>icon/default-avantar.jpg</file>
     </qresource>
 </RCC>

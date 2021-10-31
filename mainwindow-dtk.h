@@ -8,7 +8,7 @@
 #include <QGraphicsDropShadowEffect>
 #include <QThread>
 #include "src/backend/bili-api/appapi.h"
-
+#include <QPushButton>
 DWIDGET_USE_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -23,7 +23,8 @@ public:
     ~MainWindow();
 private slots:
 private:
-
+    void setAvantar(QPixmap pi);
+    QPushButton *avantarButton;
     void initPage(int now);
     void updateUi(int now);
     DSearchEdit *searchEdit=new DSearchEdit;

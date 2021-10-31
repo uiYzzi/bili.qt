@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
     ui->titlebar->setBackgroundTransparent(true);
     ui->titlebar->setMenuVisible(false);//去除dtk标题栏菜单
-    setMaskAlpha(220);
+    setMaskAlpha(230);
     setMaskColor(QColor("#F3F3F3"));
     auto *defaultShadow = new QGraphicsDropShadowEffect();
     defaultShadow->setBlurRadius(14.0);
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet("#mainpage{background-color: rgba(249,249,249,0.8);border-radius:14px;}\
                         QWidget#leftbar QPushButton{text-align: left;padding-left: 10px;background-color:transparent;}\
                         QWidget#leftbar QPushButton:hover{text-align: left;padding-left: 10px;background-color:#eAeAeA;border:0px;border-radius:8px;}\
-                        QWidget#leftbar QPushButton:checked{text-align: left;padding-left: 10px;background-color:#e2e2e2;border:0px;border-radius:8px;}\
+                        QWidget#leftbar QPushButton:checked{text-align: left;padding-left: 10px;background-color:#dddddd;border:0px;border-radius:8px;}\
                         QLabel#cardtitle,QLabel#title {color:#000000}\
                         ");
 
@@ -35,6 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ly_titlebar->addStretch();
     ly_titlebar->addWidget(searchEdit);
     ly_titlebar->addStretch();
+    avantarButton=new QPushButton(this);
+    ly_titlebar->addWidget(avantarButton);
+    avantarButton->setFixedSize(34,34);
+    avantarButton->setFlat(true);
+    avantarButton->setStyleSheet("QPushButton:hover:pressed{border-radius:17px;}");
+    setAvantar(QPixmap(":/icon/default-avantar.jpg"));
 
     AppAPI *api=new AppAPI;
     QObject::connect(api,&AppAPI::finished,[=](QJsonArray searchDefaultWords){
@@ -79,6 +85,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //推荐界面
     ui->recommendpage->updateUI();
+}
+void MainWindow::setAvantar(QPixmap pi)
+{
+    QPixmap pixmap(80,80);
+    pixmap.fill(Qt::transparent);
+    QPainter painter(&pixmap);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    QPainterPath path;
+    path.addEllipse(0, 0, 80, 80);
+    painter.setClipPath(path);
+    painter.drawPixmap(0, 0, 80, 80, pi);
+    QIcon ButtonIcon(pixmap);
+    avantarButton->setIcon(ButtonIcon);
+    avantarButton->setIconSize(avantarButton->size());
 }
 void MainWindow::initPage(int now)
 {
