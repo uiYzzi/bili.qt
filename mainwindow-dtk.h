@@ -8,6 +8,8 @@
 #include <QGraphicsDropShadowEffect>
 #include <QThread>
 #include "src/backend/bili-api/appapi.h"
+#include "src/widgets/avantartooltip.h"
+#include "src/dialogs/logindialog.h"
 #include <QPushButton>
 DWIDGET_USE_NAMESPACE
 namespace Ui {
@@ -23,6 +25,8 @@ public:
     ~MainWindow();
 private slots:
 private:
+    bool loginstatus;
+    AvantarToolTip *avantartooltip;
     void setAvantar(QPixmap pi);
     QPushButton *avantarButton;
     void initPage(int now);

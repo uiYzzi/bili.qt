@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->titlebar->setMenuVisible(false);//去除dtk标题栏菜单
     setMaskAlpha(230);
     setMaskColor(QColor("#F3F3F3"));
+    avantartooltip=new AvantarToolTip;
+    avantartooltip->hide();
     auto *defaultShadow = new QGraphicsDropShadowEffect();
     defaultShadow->setBlurRadius(14.0);
     defaultShadow->setColor(QColor(0, 0, 0, 30));
@@ -40,6 +42,18 @@ MainWindow::MainWindow(QWidget *parent) :
     avantarButton->setFixedSize(34,34);
     avantarButton->setFlat(true);
     avantarButton->setStyleSheet("QPushButton:hover:pressed{border-radius:17px;}");
+    loginstatus=false;
+    QObject::connect(avantarButton,&QPushButton::clicked,[=](){
+        if(loginstatus)
+        {
+            avantartooltip->m_move(avantarButton->mapToGlobal(avantarButton->pos()).x()-avantartooltip->width()*3+avantarButton->width()*2,avantarButton->mapToGlobal(avantarButton->pos()).y()+35);
+            avantartooltip->show();
+        }else {
+            LoginDialog *logindialog=new LoginDialog(this);
+            logindialog->show();
+        }
+    });
+
     setAvantar(QPixmap(":/icon/default-avantar.jpg"));
 
     AppAPI *api=new AppAPI;
@@ -114,11 +128,14 @@ void MainWindow::initPage(int now)
 //刷新界面
 void MainWindow::updateUi(int now)
 {
+    if(now<2)
+    {
     initPage(now);
-    ui->stackedWidget->setCurrentIndex(now);
+    ui->stackedWidget->setCurrentIndex(now);}
 }
 MainWindow::~MainWindow()
 {
+    delete avantartooltip;
     delete searchEdit;
     delete ui;
 }

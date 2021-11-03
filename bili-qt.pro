@@ -37,7 +37,9 @@ SOURCES += \
     src/widgets/common/smoothscrollarea.cpp \
     src/widgets/common/smoothlistwidget.cpp \
     src/pages/popularpage.cpp \
-    src/pages/searchpage.cpp
+    src/pages/searchpage.cpp \
+    src/widgets/avantartooltip.cpp \
+    src/dialogs/logindialog.cpp
 
 HEADERS += \
         mainwindow-dtk.h \
@@ -49,14 +51,18 @@ HEADERS += \
     src/widgets/common/smoothscrollarea.h \
     src/widgets/common/smoothlistwidget.h \
     src/pages/popularpage.h \
-    src/pages/searchpage.h
+    src/pages/searchpage.h \
+    src/widgets/avantartooltip.h \
+    src/dialogs/logindialog.h
 
 FORMS += \
         mainwindow-dtk.ui \
     src/pages/recommendpage.ui \
     src/widgets/common/videoitem.ui \
     src/pages/popularpage.ui \
-    src/pages/searchpage.ui
+    src/pages/searchpage.ui \
+    src/widgets/avantartooltip.ui \
+    src/dialogs/logindialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
